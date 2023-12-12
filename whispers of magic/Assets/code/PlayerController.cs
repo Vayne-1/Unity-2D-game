@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool grounded; //check if the character is standing on soild ground
 
     private Animator anim;
+    public CoinPickup cm;
 
     public Transform firePoint;
     public GameObject bullet;
@@ -88,5 +89,12 @@ public class PlayerController : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("coin"))
+        {
+            Destroy(other.gameObject);
+            cm.coinCount++;       }
     }
 }

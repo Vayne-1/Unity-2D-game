@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public int health = 6;
+  
     public int lives = 3;
     public float flickerDura1on = 0.1f;
     private float flickerTime = 0f;
@@ -31,6 +32,7 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
+   
     public void TakeDamage(int damage)
     {
         if (this.isImmune == false)
@@ -71,8 +73,10 @@ public class PlayerStats : MonoBehaviour
             this.flickerTime = 0;
         }
     }
-    // public void CollectCoin(int coinValue)
-    // {
+    //public void CollectCoin(int coinValue)
+     //{
+        
     // this.coinsCollected = this.coinsCollected + coinValue;
-    // }
+        
+   // }
 } //Class
