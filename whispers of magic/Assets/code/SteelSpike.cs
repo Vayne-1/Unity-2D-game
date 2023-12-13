@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class SteelSpike : MonoBehaviour
 {
+    public int damage = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,11 @@ public class SteelSpike : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
+        {
             //if the collider of the object whose name is Sonic GameObject touches the spike collider
-            FindObjectOfType<LevelManager>().RespawnPlayer();
-        //go to the level manager script, and execute the respawn player function .. (hyro7 l a5er checkPoint)
+            //FindObjectOfType<LevelManager>().RespawnPlayer();
+            //go to the level manager script, and execute the respawn player function .. (hyro7 l a5er checkPoint)
+            FindObjectOfType<PlayerStats>().TakeDamage(damage);
+        }
     }
 }
