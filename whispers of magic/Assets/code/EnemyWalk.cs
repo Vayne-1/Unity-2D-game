@@ -31,6 +31,7 @@ public class EnemyWalk : EnemyController
             {
                 Debug.Log("Player collision");
                 FindObjectOfType<PlayerStats>().TakeDamage(damage);
+                Flip();
             }
         }
     }
