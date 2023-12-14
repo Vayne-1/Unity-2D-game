@@ -63,6 +63,7 @@ public class PlayerStats : MonoBehaviour
             }
             else if (this.lives == 0 && this.health == 0)
             {
+                (new NavigationController()).GoToGameOver();
                 heartBar.fillAmount = 0f;
                 Debug.Log("Gameover"); //add game over splash screen
                 animator.SetTrigger("isDead");
