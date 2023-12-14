@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
     void OnTriggerEnter2D(Collider2D Other)
     {
         //if the collider of the object whose name is Sonic GameObject touches the checkPoint's circle collider
-        if (Other.name == "Player")
+        if (Other.tag == "Player")
             FindObjectOfType<LevelManager>().CurrentCheckpoint = this.gameObject;
         //go to the level manager script, and update the value of CurrentCheckpoint to become the new CheckPoint the player has
         // just passed through. This is necessary when you have several checkpoints in a level..

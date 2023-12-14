@@ -45,5 +45,16 @@ public class BulletController : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
         }
+         else if (other.tag == "ground")
+        {
+            
+            Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
+        }
+        else if (other.tag == "Wall")
+        {
+
+            Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
+        }
     }
+   
 }
