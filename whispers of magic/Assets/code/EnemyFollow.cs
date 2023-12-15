@@ -44,7 +44,7 @@ public class EnemyFollow : EnemyController
     {
         if (collider != null && canFlip)
         {
-            if (collider.CompareTag("Wall") || collider.CompareTag("Enemy"))
+            if (collider.CompareTag("Wall") || collider.CompareTag("ground"))
             {
                 Flip();
                 StartCoroutine(FlipCooldown());
