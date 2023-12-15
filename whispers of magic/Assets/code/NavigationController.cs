@@ -6,7 +6,7 @@ public class NavigationController : MonoBehaviour
 {
     public void GoToIntroScene()
     {
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
     public void GoToGameScene()
     {
