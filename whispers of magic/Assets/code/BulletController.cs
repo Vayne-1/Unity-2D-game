@@ -58,6 +58,11 @@ public class BulletController : MonoBehaviour
         if (other.tag == "Fireball")
         {
             Destroy(gameObject);
+     
+        }
+        if (other.tag == "Wall")
+        {
+            Destroy(gameObject);
         }
     }
 }
