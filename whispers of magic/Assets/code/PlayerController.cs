@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-    //NOTE : LAZEM EL VARIABLES TKON ' PUBLIC ' 3SHAN ASHOFHA F UNITY ..
+   
 
 
     public float moveSpeed; //how fast the character moves
@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip jump1;
     public AudioClip jump2;
 
+    public float shootCooldown = 0.5f; // Set the desired cooldown time
+    private bool canShoot = true; // Flag to control shooting cooldown
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +49,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(s)) //When user presses the s buXon
+        if (Input.GetKeyDown(s) && canShoot) //When user presses the s buXon
         {
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            anim.SetBool("shoot", true);
+            Shoot();
+            StartCoroutine(ShootCooldown()); // Start the cooldown timer
+            
+
+            //Instantiate(bullet, firePoint.position, firePoint.rotation);
+
         }
         if (Input.GetKeyDown(Spacebar) && grounded) //When user presses the space buXon once
         {
@@ -96,5 +106,25 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             cm.coinCount++;       }
+    }
+    void Shoot()
+    {
+        GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+        // Check the facing direction and adjust the bullet's scale accordingly
+        if (!isFacingRight)
+        {
+            // If facing left, flip the bullet by changing its local scale
+            Vector3 newScale = newBullet.transform.localScale;
+            newScale.x *= -1;
+            newBullet.transform.localScale = newScale;
+        }
+    }
+    IEnumerator ShootCooldown()
+    {
+        canShoot = false; // Set to false to prevent shooting during cooldown
+        yield return new WaitForSeconds(shootCooldown);
+        GetComponent<Animator>().SetBool("shoot", false);
+        canShoot = true; // Set to true after the cooldown period
     }
 }
