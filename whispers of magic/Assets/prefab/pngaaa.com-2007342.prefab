@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  delayTime: 3
 --- !u!50 &-2317802790916231899
 Rigidbody2D:
   serializedVersion: 4

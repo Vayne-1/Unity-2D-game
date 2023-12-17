@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - coin
   - ground
+  - Enemy2
+  - Fireball
   layers:
   - Default
   - TransparentFX

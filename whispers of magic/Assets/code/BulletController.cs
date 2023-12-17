@@ -45,16 +45,19 @@ public class BulletController : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
         }
-         else if (other.tag == "ground")
+        if (other.tag == "ground")
         {
-            
+          
             Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
         }
-        else if (other.tag == "Wall")
+        if (other.tag == "Enemy2")
         {
-
+            other.GetComponent<Health>().TakeDamage(1);
             Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
+        }
+        if (other.tag == "Fireball")
+        {
+            Destroy(gameObject);
         }
     }
-   
 }
