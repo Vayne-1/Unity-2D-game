@@ -10,6 +10,7 @@ TagManager:
   - ground
   - Enemy2
   - Fireball
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - ground
   - background
   - Player
-  - 
+  - Boss
   - 
   - 
   - 

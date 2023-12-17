@@ -60,6 +60,11 @@ public class BulletController : MonoBehaviour
             other.GetComponent<Health>().TakeDamage(1);
             Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
         }
+        if (other.tag == "Boss")
+        {
+            other.GetComponent<BossHealth>().TakeDamage(100);
+            Destroy(gameObject); // Destroy the bullet as well if it collides with an enemy
+        }
         if (other.tag == "Fireball")
         {
             Destroy(gameObject);
