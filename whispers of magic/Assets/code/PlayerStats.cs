@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public int health = 100;
     public int lives = 2;
     public float flickerDura1on = 0.1f;
@@ -19,8 +24,6 @@ public class PlayerStats : MonoBehaviour
 
     public Image healthBar;
     public Image heartBar;
-
-    public float gameOverDelay = 2.0f;
 
     // public int coinsCollected = 0;
     void Start()
@@ -65,7 +68,8 @@ public class PlayerStats : MonoBehaviour
             }
             else if (this.lives == 0 && this.health == 0)
             {
-                StartCoroutine(GameOverWithDelay());
+                audioManager.PlaySFX(audioManager.death);
+                (new NavigationController()).GoToGameOver();
                 heartBar.fillAmount = 0f;
                 Debug.Log("Gameover"); //add game over splash screen
                 animator.SetTrigger("isDead");
@@ -74,7 +78,6 @@ public class PlayerStats : MonoBehaviour
                     rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
                 Destroy(gameObject, 4.0f);
-                (new NavigationController()).GoToGameOver();
             }
             Debug.Log("Player Health : " + this.health.ToString());
             Debug.Log("Player Lives : " + this.lives.ToString());
@@ -111,16 +114,5 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.LogWarning("Image component not assigned.");
         }
-    }
-    IEnumerator GameOverWithDelay()
-    {
-        Time.timeScale = 1f;
-
-        // Wait for the specified delay before showing the game over screen
-        yield return new WaitForSeconds(gameOverDelay);
-
-        // Load the game over scene or show the game over UI
-        // Example using SceneManager:
-
     }
 } 

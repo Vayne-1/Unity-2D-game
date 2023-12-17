@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-   
-
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public float moveSpeed; //how fast the character moves
     public float jumpHeight; //how hight the character jump
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode R; //R is the name we gave a keyboard button we chose to be the right movement button
 
     public Transform groundCheck; //we use it to see if the player is touching the ground
+
     public float groundCheckRadius; //close ad eh to the ground
 
     public LayerMask whatIsGround; //this variable stores what is considred a ground to the character
@@ -28,8 +32,9 @@ public class PlayerController : MonoBehaviour
 
     public Transform firePoint;
     public GameObject bullet;
-
-    public KeyCode s; //s is the name we gave a keyboard button we chose 3shan adrb naar 3la el enemy
+    public GameObject bullet1;
+    public KeyCode s;
+    public KeyCode x;//s is the name we gave a keyboard button we chose 3shan adrb naar 3la el enemy
 
 
     //sooot lma b jump
@@ -49,12 +54,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(s) && canShoot) //When user presses the s buXon
-        {
-            anim.SetBool("shoot", true);
+        if (Input.GetKeyDown(s) && canShoot)
+        { //When user presses the s buXon
+
+            anim.SetBool("Shoot", true);
             Shoot();
             StartCoroutine(ShootCooldown()); // Start the cooldown timer
-            
+        }
+            //Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+        
+        if (Input.GetKeyDown(x) && canShoot) //When user presses the s buXon
+        {
+            Shoot1();
+            StartCoroutine(ShootCooldown()); // Start the cooldown timer
 
             //Instantiate(bullet, firePoint.position, firePoint.rotation);
 
@@ -104,12 +117,29 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
+            audioManager.PlaySFX(audioManager.coin);
             Destroy(other.gameObject);
-            cm.coinCount++;       }
+            cm.coinCount++;
+        }
     }
     void Shoot()
     {
+        audioManager.PlaySFX(audioManager.shoot1);
         GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+        // Check the facing direction and adjust the bullet's scale accordingly
+        if (!isFacingRight)
+        {
+            // If facing left, flip the bullet by changing its local scale
+            Vector3 newScale = newBullet.transform.localScale;
+            newScale.x *= -1;
+            newBullet.transform.localScale = newScale;
+        }
+    }
+    void Shoot1()
+    {
+        audioManager.PlaySFX(audioManager.shoot2);
+        GameObject newBullet = Instantiate(bullet1, firePoint.position, firePoint.rotation);
 
         // Check the facing direction and adjust the bullet's scale accordingly
         if (!isFacingRight)
@@ -124,7 +154,8 @@ public class PlayerController : MonoBehaviour
     {
         canShoot = false; // Set to false to prevent shooting during cooldown
         yield return new WaitForSeconds(shootCooldown);
-        GetComponent<Animator>().SetBool("shoot", false);
+        GetComponent<Animator>().SetBool("Shoot", false);
         canShoot = true; // Set to true after the cooldown period
     }
+
 }

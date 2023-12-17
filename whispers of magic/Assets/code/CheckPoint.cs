@@ -1,7 +1,13 @@
 using System.Collections;
 using UnityEngine;
 public class CheckPoint : MonoBehaviour
+   
 {
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +23,7 @@ public class CheckPoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Other)
     {
+        audioManager.PlaySFX(audioManager.checkpoint);
         //if the collider of the object whose name is Sonic GameObject touches the checkPoint's circle collider
         if (Other.tag == "Player")
             FindObjectOfType<LevelManager>().CurrentCheckpoint = this.gameObject;

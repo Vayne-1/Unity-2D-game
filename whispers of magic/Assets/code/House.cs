@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,7 @@ public class House : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        audioManager.PlaySFX(audioManager.teleport);
         if (other.tag == "Player")
             //if the collider of the object whose name is Sonic GameObject touches the spike collider
             FindObjectOfType<LevelManager2>().RespawnPlayer();
