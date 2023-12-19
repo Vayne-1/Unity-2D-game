@@ -379,6 +379,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3579238746451455654, guid: c23e285345bd168449308b3abb942536, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579238746451455654, guid: c23e285345bd168449308b3abb942536, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239663790528823452, guid: c23e285345bd168449308b3abb942536, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8239663790528823454, guid: c23e285345bd168449308b3abb942536, type: 3}
       propertyPath: m_Name
       value: GameOver

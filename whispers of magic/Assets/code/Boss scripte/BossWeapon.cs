@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public int attackDamage = 20;
     public int enragedAttackDamage = 40;
 
@@ -13,6 +18,7 @@ public class BossWeapon : MonoBehaviour
 
     public void Attack()
     {
+        audioManager.PlaySFX(audioManager.boss_attack);
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;
@@ -26,6 +32,7 @@ public class BossWeapon : MonoBehaviour
 
     public void EnragedAttack()
     {
+        audioManager.PlaySFX(audioManager.boss_attack);
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;

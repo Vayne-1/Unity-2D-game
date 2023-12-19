@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip shoot1;
     public AudioClip shoot2;
     public AudioClip jump;
+    public AudioClip boss_attack;
+    public AudioClip boss_enrage;
+    public AudioClip boss_death;
     private void Start()
     {
         musicSource.clip = background1;

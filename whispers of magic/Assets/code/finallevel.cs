@@ -1,10 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextLevel : MonoBehaviour
+public class finallevel : MonoBehaviour
 {
     public string scenename;
     private BossHealth Boss;
@@ -24,12 +23,12 @@ public class NextLevel : MonoBehaviour
             //if the collider of the object whose name is Sonic GameObject touches the spike collider
             //FindObjectOfType<LevelManager>().RespawnPlayer();
             //go to the level manager script, and execute the respawn player function .. (hyro7 l a5er checkPoint)
-           // if (Boss.health <= 0)
-            //{
-                SceneManager.LoadScene(scenename);
-            //}
+             if (Boss.health <= 0)
+            {
+            SceneManager.LoadScene(scenename);
+            }
         }
     }
-    
+
 
 }

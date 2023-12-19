@@ -7,11 +7,12 @@ public class PauseResume : MonoBehaviour
     public GameObject PauseScreen;
     public static bool paused;
     public KeyCode PauseButton;
-
+   
     void Start()
     {
         paused = false;
         PauseScreen.SetActive(false);
+
     }
 
     void Update()
@@ -23,6 +24,10 @@ public class PauseResume : MonoBehaviour
         else if (Input.GetKeyDown(PauseButton) && paused)
         {
             Resume();
+        }
+        else if (Input.GetKeyDown(PauseButton) && paused)
+        {
+            Quit();
         }
     }
 
@@ -38,6 +43,11 @@ public class PauseResume : MonoBehaviour
         PauseScreen.SetActive(false);
         paused = false;
         Time.timeScale = 1;
+    }
+    public void Quit()
+    {
+        
+        Application.Quit();
     }
 }
 
