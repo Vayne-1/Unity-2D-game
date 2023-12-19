@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(s) && canShoot) //When user presses the s buXon
         {
+            anim.SetBool("shoot", true);
             Shoot();
             StartCoroutine(ShootCooldown()); // Start the cooldown timer
 
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         canShoot = false; // Set to false to prevent shooting during cooldown
         yield return new WaitForSeconds(shootCooldown);
+        GetComponent<Animator>().SetBool("shoot", false);
         canShoot = true; // Set to true after the cooldown period
     }
 }
