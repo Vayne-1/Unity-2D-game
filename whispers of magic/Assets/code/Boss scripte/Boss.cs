@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : EnemyController
 {
 
+    private bool canFlip = true;
     public Transform player;
 
     public bool isFlipped = false;
@@ -27,5 +28,6 @@ public class Boss : MonoBehaviour
             isFlipped = true;
         }
     }
+   
 
 }

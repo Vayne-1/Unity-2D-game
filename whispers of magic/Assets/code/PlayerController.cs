@@ -54,16 +54,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(s) && canShoot)
-        { //When user presses the s buXon
-
-            anim.SetBool("Shoot", true);
+        if (Input.GetKeyDown(s) && canShoot) //When user presses the s buXon
+        {
             Shoot();
             StartCoroutine(ShootCooldown()); // Start the cooldown timer
-        }
+
             //Instantiate(bullet, firePoint.position, firePoint.rotation);
 
-        
+        }
         if (Input.GetKeyDown(x) && canShoot) //When user presses the s buXon
         {
             Shoot1();
@@ -111,7 +109,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-
+        audioManager.PlaySFX(audioManager.jump);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -154,8 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         canShoot = false; // Set to false to prevent shooting during cooldown
         yield return new WaitForSeconds(shootCooldown);
-        GetComponent<Animator>().SetBool("Shoot", false);
         canShoot = true; // Set to true after the cooldown period
     }
-
 }

@@ -7,7 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/intro.unity
+    guid: b9aacbb880338f44aa7acdd36685ca5c
   - enabled: 1
     path: Assets/Scenes/gameover.unity
     guid: a7b28a6b4f66e6d4d9099a119f5b8c0a
@@ -20,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/samni level.unity
     guid: bec9fab1784b88645b183a10dc69ff52
+  - enabled: 1
+    path: Assets/Scenes/abdelrahman's Scene.unity
+    guid: 862dfba04a2d07a418c013c1c2f86dec
+  - enabled: 1
+    path: Assets/Scenes/victory.unity
+    guid: cc799fbe1445b574a9a8fa27a7ef52d3
+  - enabled: 1
+    path: Assets/Scenes/ahmed scene 2.unity
+    guid: c4e642f122ce9144193b605f39b21ac2
+  - enabled: 1
+    path: Assets/Scenes/boss enemy.unity
+    guid: e0d763747af1d1143bd2753e0c6e4798
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
